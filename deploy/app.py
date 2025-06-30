@@ -1,6 +1,68 @@
+from sklearn.base import BaseEstimator, TransformerMixin, OneToOneFeatureMixin
+import numpy as np
 import gradio as gr
 import joblib
 import pandas as pd
+
+class FeatureEngineer(BaseEstimator, TransformerMixin):
+    def __init__(self):
+        self._transform_output = None
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X):
+        X = X.copy()
+
+        X['ef_to_creatinine'] = X['ejection_fraction'] / X['serum_creatinine']
+        X['ef_drop_per_age'] = (100 - X['ejection_fraction']) / X['age']
+        X['ef_per_time'] = X['ejection_fraction'] / X['time']
+        X['time_x_ef'] = X['time'] * X['ejection_fraction']
+        X['creatinine_x_ef'] = X['serum_creatinine'] * X['ejection_fraction']
+        X['time_x_creatinine'] = X['time'] * X['serum_creatinine']
+        X.drop(columns=['diabetes', 'anaemia', 'smoking', 'sex', 'high_blood_pressure'], errors='ignore', inplace=True)
+
+        X.replace([np.inf, -np.inf], np.nan, inplace=True)
+
+        if self._transform_output == "pandas":
+            return pd.DataFrame(X, columns=X.columns, index=X.index)
+        else:
+            return X
+
+    def set_output(self, transform=None):
+        self._transform_output = transform
+        return self
+
+class CoerceToFloat(BaseEstimator, TransformerMixin, OneToOneFeatureMixin):
+    def __init__(self, columns):
+        self.columns = columns
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X):
+        X = X.copy()
+        for col in self.columns:
+            X[col] = X[col].astype(float)
+        return X
+
+class NumericImputer(BaseEstimator, TransformerMixin, OneToOneFeatureMixin):
+    def __init__(self, columns):
+        self.columns = columns
+
+    def fit(self, X, y=None):
+        X = X.copy()
+        self.medians_ = {
+            col: X[col].median(skipna=True)
+            for col in self.columns
+        }
+        return self
+
+    def transform(self, X):
+        X = X.copy()
+        for col in self.columns:
+            X[col] = X[col].fillna(self.medians_[col])
+        return X
 
 pipeline = joblib.load("model_pipeline.pkl")
 threshold = 0.1027
