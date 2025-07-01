@@ -1,22 +1,29 @@
-# Heart Failure Classification – Recall focus ML Pipeline
-Hugging face deployment demo: https://huggingface.co/spaces/Carson-Shively/deploy-heart-failure
+# Heart Failure Classification
 
 Primary Goal:
 Minimize false negatives, as missing an at-risk patient can result in death. In contrast, false positives, while not ideal, only lead to additional screening or short-term stress.
+
 Approach:
 Designed and optimized the model specifically for high recall, using domain-informed preprocessing, threshold tuning, and validation to ensure at-risk patients are not missed.
 
+Hugging face deployment demo: https://huggingface.co/spaces/Carson-Shively/deploy-heart-failure
 
-Dataset:
+# Dataset:
 Source: UCI Heart Failure Clinical Records
+
 Target: DEATH_EVENT (binary)
+
 Imbalance: Present — handled via threshold tuning
+
 Citation:
 Davide Chicco, Giuseppe Jurman: Machine learning can predict survival of patients with heart failure from serum creatinine and ejection fraction alone. BMC Medical Informatics and Decision Making 20, 16 (2020). (https://bmcmedinformdecismak.biomedcentral.com/articles/10.1186/s12911-020-1023-5
 
-Modeling Overview:
+# Modeling Overview:
+
 Baseline Model: Logistic Regression
+
 Baseline metrics:
+
 Cross-Validation Performance:
   accuracy: 0.8074 ± 0.0406
   precision: 0.6755 ± 0.0787
