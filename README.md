@@ -44,7 +44,7 @@ Random Forest provided the strongest performance while aligning with the charact
 
 ### Final model tuned for recall:
 
- Cross-Validated Metrics with Threshold = 0.1027:
+ #### Cross-Validated Metrics with Threshold = 0.1027:
  
   Accuracy : 0.7113
   
@@ -56,7 +56,7 @@ Random Forest provided the strongest performance while aligning with the charact
   
   ROC AUC  : 0.9178
   
-Evaluation on Hold-out Validation Set:
+#### Evaluation on Hold-out Validation Set:
 
   Accuracy : 0.7333
   
@@ -87,4 +87,5 @@ These engineered interaction terms provided a clear performance edge over all ot
 
 ## The model successfully achieves its primary objective:
 -Minimizing false negatives, which is critical in a clinical setting where missing high-risk patients could lead to death.
+
 -By prioritizing recall, the model helps ensure at-risk individuals are identified, supporting timely intervention and potentially saving lives.
