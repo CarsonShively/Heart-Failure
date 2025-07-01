@@ -113,7 +113,7 @@ iface = gr.Interface(
     ],
     outputs="text",
     title="Heart Failure Risk Prediction",
-    description="Predict whether a patient is at risk of death using clinical features. Model trained with a custom probability threshold optimized for recall."
+    description="Predict whether a patient is at risk of death using clinical features. Model trained with a custom probability threshold optimized for recall to reduce false negatives."
 )
 
 if __name__ == "__main__":
