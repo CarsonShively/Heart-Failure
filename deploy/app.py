@@ -89,8 +89,8 @@ def predict_from_input(age, anaemia, creatinine_phosphokinase, diabetes, ejectio
         df = pd.DataFrame([input_dict])
         proba = pipeline.predict_proba(df)[0][1]
         prediction = int(proba >= threshold)
-        result = "No (Low Risk)" if prediction == 0 else "Yes (High Risk)"
-        return f"{result} (Probability of Death: {proba:.2%})"
+        result = "(Not at Risk)" if prediction == 0 else "(At Risk)"
+        return f"{result} (Probability: {proba:.2%})"
     
     except Exception as e:
         return f"Error during prediction: {str(e)}"
