@@ -34,12 +34,12 @@ Cross-Validation Performance:
   
   roc_auc: 0.8926 ± 0.0413
 
-SOlid baseline metrics and gained valuable insights into the data for further modeling.
-
+Solid baseline metrics and gained valuable insights into the data for further modeling.
 
 ### Models Tested: Random Forest, XGBoost, LightGBM
 
 Random Forest provided the strongest performance while aligning with the characteristics of the dataset:
+
 -The dataset is relatively small, making simpler models less prone to overfitting.
 
 ### Final model tuned for recall:
