@@ -3,6 +3,7 @@ import numpy as np
 import gradio as gr
 import joblib
 import pandas as pd
+from sklearn.utils.validation import check_is_fitted
 
 class FeatureEngineer(BaseEstimator, TransformerMixin):
     def __init__(self):
