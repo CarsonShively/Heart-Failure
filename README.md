@@ -89,3 +89,11 @@ These engineered interaction terms provided a clear performance edge over all ot
 -Minimizing false negatives, which is critical in a clinical setting where missing high-risk patients could lead to death.
 
 -By prioritizing recall, the model helps ensure at-risk individuals are identified, supporting timely intervention and potentially saving lives.
+
+python3 -m venv .venv
+
+source .venv/bin/activate
+
+python -m pip install -U pip
+
+pip install -e .
