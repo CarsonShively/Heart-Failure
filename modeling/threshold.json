@@ -1,0 +1,7 @@
+{
+  "best_threshold": {
+    "metric": "f1",
+    "source": "oof",
+    "value": 0.4891
+  }
+}
