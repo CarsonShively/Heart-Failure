@@ -11,7 +11,7 @@ from huggingface_hub import hf_hub_download
 
 train_data = hf_hub_download(
         repo_id="Carson-Shively/heart-failure",
-        filename="data/gold/gold_uf.parquet",
+        filename="data/gold/gold_hf.parquet",
         repo_type="dataset",
         revision="main",
     )
